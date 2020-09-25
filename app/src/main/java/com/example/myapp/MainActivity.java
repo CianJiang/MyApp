@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextView list, user_bk, meeting;
+    private TextView list, user_bk, meeting,book;
     //private ImageView menu_add;
 
     private fragment1 fragment1;
@@ -51,9 +52,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user_bk = findViewById(R.id.user_bk);
         meeting = findViewById(R.id.meeting);
         //menu_add  = findViewById(R.id.menu_add);
+        book =findViewById(R.id.fast_book);
         list.setOnClickListener(this);
         user_bk.setOnClickListener(this);
         meeting.setOnClickListener(this);
+        book.setOnClickListener(this);
 
         fManager = getSupportFragmentManager();
 
@@ -113,6 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     transaction.show(fragment3);
                 }
                 break;
+            case R.id.fast_book:
+                Intent intent=new Intent(this,FastActivity.class);
+                startActivity(intent);
         }
         //把newsFragment添加到Activity中的指定位置,最后调用commit()或者commitAllowingStateLoss()
         transaction.commitAllowingStateLoss();
